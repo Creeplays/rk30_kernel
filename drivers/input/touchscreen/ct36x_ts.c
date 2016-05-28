@@ -462,7 +462,7 @@ static int ct360_ts_probe(struct i2c_client *client, const struct i2c_device_id 
     else
         printk("%s.............boot_buf=%d\n",__FUNCTION__,boot_buf);
 
-    if (Binary_Data[32756] != boot_buf)
+    if(false)// (Binary_Data[32756] != boot_buf)
     {
         printk("start Bootloader ...........boot_Buf=%x.....%d......%x..........TP \n\n",boot_buf,(Binary_Data[16372]-boot_buf),Binary_Data[16372]);
         ret = CTP_BootLoader(ts);
