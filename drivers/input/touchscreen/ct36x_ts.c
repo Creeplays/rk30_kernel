@@ -102,7 +102,7 @@ static int ct360_write_regs(struct i2c_client *client, u8 reg, u8 const buf[], u
 char const  Binary_Data[32768]=
 {
 //#include "CT365RC972030D_V39120329A_waterproof.dat"
-#include "ts36100.dat"
+//#include "ts36100.dat"
 };
 
 char CTP_BootLoader(struct ct360_ts_data *ts)
@@ -232,7 +232,7 @@ char CTP_BootLoader(struct ct360_ts_data *ts)
     // Step4. Host read checksum to verify ;
     // Write/Read for 256 times ( 32k Bytes )
     //----------------------------------------
-
+/*
     for ( j = 0 ; j < 256 ; j++ )                           // 32k/128 = 256 times
     {
         Flash_Address = 128*j ;                             // 0 ~ 127 ; 128 ~ 255 ;
@@ -304,7 +304,7 @@ char CTP_BootLoader(struct ct360_ts_data *ts)
 
         }
 
-    }
+    }*/
 
     ts->client->addr = 0x01;
     boot_printk("%s......4...\n",__FUNCTION__);
