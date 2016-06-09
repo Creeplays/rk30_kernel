@@ -29,7 +29,7 @@
 #include <linux/platform_device.h>
 
 
-#define CT360_DEBUG  0
+#define CT360_DEBUG  1
 
 #if CT360_DEBUG
     #define ct360printk(msg...) printk(msg);
@@ -37,7 +37,7 @@
     #define ct360printk(msg...)
 #endif
 
-#if 0
+#if CT360_DEBUG
     #define  boot_printk(msg...)  printk(msg);
 #else
     #define  boot_printk(msg...)
@@ -335,8 +335,8 @@ static void ct360_ts_work_func(struct work_struct *work)
     {
         if (((buf[i+1] << 4)|(buf[i+3] >> 4)) != 0x0fff)
         {
-            x = ((buf[i+0] << 4)|(buf[i+2] >> 4));
-            y = ((buf[i+1] << 4)|(buf[i+2]&0x0F));
+            x = (((buf[i+0] << 4)|(buf[i+2] >> 4))<<1);
+            y = (((buf[i+1] << 4)|(buf[i+2]&0x0F))>>0);
             point_status=buf[i+3]&0x07;
             point_num = buf[i+3]>>3;
             point_pressure = (buf[i+5]*4)>=255? 255 : (buf[i+5]*4);
